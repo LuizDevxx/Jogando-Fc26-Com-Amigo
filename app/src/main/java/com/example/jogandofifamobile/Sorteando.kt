@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -149,8 +150,32 @@ fun Sorteando(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = nomeTime, color = Color.White, fontSize = 20.sp)
+                    Box(
+                        modifier = Modifier
+                            .height(40.dp)
+                            .width(120.dp)
+                            .clip(RoundedCornerShape(100.dp)),
+                        contentAlignment = Alignment.Center
+
+                    ) {
+
+                        Image(
+                            painter = painterResource(R.drawable.fundo),
+                            contentDescription = "Foto de fundo",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        )
+                        Text(
+                            "Jogador 1",
+                            color = Color.White,
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontSize = 20.sp
+                        )
+                    }
+
                     Spacer(modifier = Modifier.height(8.dp))
+
 
                     Box(
                         modifier = Modifier
@@ -167,8 +192,10 @@ fun Sorteando(navController: NavController) {
                                 .clip(RoundedCornerShape(100.dp)),
                             contentScale = ContentScale.Crop
                         )
+
                     }
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Text(text = nomeTime, color = Color.White, fontSize = 20.sp)
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     TextField(
                         value = placar,
@@ -185,7 +212,29 @@ fun Sorteando(navController: NavController) {
                 }
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = nomeTime2, color = Color.White, fontSize = 20.sp)
+                    Box(
+                        modifier = Modifier
+                            .height(40.dp)
+                            .width(120.dp)
+                            .clip(RoundedCornerShape(100.dp)),
+                        contentAlignment = Alignment.Center
+
+                    ) {
+
+                        Image(
+                            painter = painterResource(R.drawable.fundo),
+                            contentDescription = "Foto de fundo",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        )
+                        Text(
+                            "Jogador 2",
+                            color = Color.White,
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontSize = 20.sp
+                        )
+                    }
                     Spacer(modifier = Modifier.height(8.dp))
                     Box(
                         modifier = Modifier
@@ -203,7 +252,9 @@ fun Sorteando(navController: NavController) {
                             contentScale = ContentScale.Crop
                         )
                     }
-                    Spacer(modifier = Modifier.height(20.dp))
+
+                    Text(text = nomeTime2, color = Color.White, fontSize = 20.sp)
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     TextField(
                         value = placarDois,
@@ -218,7 +269,7 @@ fun Sorteando(navController: NavController) {
                     )
                 }
             }
-            Column (horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
                     onClick = {
                         sorteio = (1..12).random()
@@ -230,11 +281,13 @@ fun Sorteando(navController: NavController) {
                         containerColor = Color.Black
                     )
                 ) {
-                    Text("Sortear Times",
+                    Text(
+                        "Sortear Times",
                         color = Color.White,
-                        fontSize = 15.sp)
+                        fontSize = 15.sp
+                    )
                 }
-                if (placar == placarDois && placar.isNotEmpty() && placarDois.isNotEmpty()){
+                if (placar == placarDois && placar.isNotEmpty() && placarDois.isNotEmpty()) {
                     Text(
                         text = "Gere outro time e desempate",
                         color = Color.White,
@@ -247,10 +300,10 @@ fun Sorteando(navController: NavController) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
                     onClick = {
-                        if (placar.isNotEmpty() && placarDois.isNotEmpty()&&placarDois !=placar) {
+                        if (placar.isNotEmpty() && placarDois.isNotEmpty() && placarDois != placar) {
 
                             ganhador = when {
-                                placar > placarDois-> 1
+                                placar > placarDois -> 1
                                 else -> 2
                             }
                             navController.navigate("premio/$ganhador")
@@ -263,9 +316,11 @@ fun Sorteando(navController: NavController) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
 
                 ) {
-                    Text("Confirmar placar",
+                    Text(
+                        "Confirmar placar",
                         color = Color.White,
-                        fontSize = 20.sp)
+                        fontSize = 20.sp
+                    )
 
                 }
 
